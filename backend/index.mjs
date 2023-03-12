@@ -4,8 +4,8 @@ import cors from "cors";
 import morgan from "morgan";
 import bodyParser from 'body-parser';
 import mongoose from "mongoose";
-import { authRouter } from "./routes/auth.mjs";
-
+import { authRouter}  from "./routes/auth.mjs";
+const hashedString = await authRouter.generateHash("Siddharth")
 dotenv.config();
 
 const app = express();
@@ -13,7 +13,7 @@ const app = express();
 app.use(morgan('dev'));
 app.use(cors());
 
-app.use('/user/api', authRouter);
+// app.use('/user/api', authRouter);
 
 if (process.env.NODE_ENV === 'production') {
     //*Set static folder up in production
